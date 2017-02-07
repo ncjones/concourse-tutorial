@@ -1,0 +1,14 @@
+---
+resources:
+- name: concourse-tutorial
+  type: git
+  source:
+    uri: https://github.com/ncjones/concourse-tutorial.git
+
+jobs:
+- name: job-build
+  public: true
+  plan:
+  - get: concourse-tutorial
+  - task: slow-build
+    file: concourse-tutorial/ncjones/task_slow_build.yml
